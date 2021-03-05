@@ -13,7 +13,8 @@ This will work for most of the ads block extension such as Adblock, AdBlock Plus
 **Features:**
 
 *   ☞ Doesn\'t any extension or library (Even jQuery)
-*   ☞ Lightweight ☞ Ability to customize the title
+*   ☞ Lightweight 
+*   ☞ Ability to customize the title
 *   ☞ Ability to customize messages
 *   ☞ Hide or Show Refresh and Close Button
 
