@@ -29,9 +29,6 @@ This will work for most of the ads block extension such as Adblock, AdBlock Plus
 [![Buy Pro](https://codehelppro.com/wp-content/uploads/2021/03/Orange-Buy-Now-Button2.png)](https://codehelppro.com/product/chp-ads-block-detector/)
 
 
-Thank You
-
-
 ## Installation
 
 This section describes how to install the plugin and get it working.
