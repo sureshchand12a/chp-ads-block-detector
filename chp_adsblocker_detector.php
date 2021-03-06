@@ -210,11 +210,11 @@ if( ! class_exists( 'chp_adsblocker_detector' ) ){
             *****************************************/ 
             if( isset( $_POST['reset'] ) ){
                 $options = chp_ads_block_defaults();
-                update_option( 'chp_adb_plugin_enable', $options->enable );
-                update_option( 'chp_adb_plugin_title', $options->title );
-                update_option( 'chp_adb_plugin_content', $options->content );
-                update_option( 'chp_adb_plugin_btn1_show', $options->btn1_show );
-                update_option( 'chp_adb_plugin_btn1_show', $options->btn2_show );
+                update_option( 'chp_adb_plugin_enable', sanitize_text_field ( $options->enable ) );
+                update_option( 'chp_adb_plugin_title', sanitize_text_field ( $options->title ) );
+                update_option( 'chp_adb_plugin_content', wp_kses_post ( $options->content ) );
+                update_option( 'chp_adb_plugin_btn1_show', sanitize_text_field ( $options->btn1_show ) );
+                update_option( 'chp_adb_plugin_btn1_show', sanitize_text_field ( $options->btn2_show ) );
                 echo 'Settings reset successfully';
             }
 
@@ -268,7 +268,8 @@ if( ! class_exists( 'chp_adsblocker_detector' ) ){
         *****************************************/  
         public function scripts(){
 
-            wp_enqueue_script( 'chp-ads-handler', CHP_ADSB_URL . 'js/chp-ads.js', array(), '1.0', true );
+            $version = filemtime( CHP_ADSB_DIR. 'js/chp-ads.js' );
+            wp_enqueue_script( 'chp-ads-handler', CHP_ADSB_URL . 'js/chp-ads.js', array(), $version, true );
 
         }
 
@@ -301,11 +302,11 @@ if( ! class_exists( 'chp_adsblocker_detector' ) ){
             Get user settings
             *****************************************/ 
             $settings = array(
-                'enable' => empty(get_option( 'chp_adb_plugin_enable' )) ? true : get_option( 'chp_adb_plugin_enable' ),
-                'title' => empty(get_option( 'chp_adb_plugin_title' )) ? 'Ads Blocker Detected!!!' : get_option( 'chp_adb_plugin_title' ),
-                'content' => empty(get_option( 'chp_adb_plugin_content' )) ? '<p>We have detected that you are using extensions to block ads. Please support us by disabling these ads blocker.</p>' : get_option( 'chp_adb_plugin_content' ),
-                'btn1_show' => empty(get_option( 'chp_adb_plugin_btn1_show' )) ? true : get_option( 'chp_adb_plugin_btn1_show' ),
-                'btn2_show' => empty(get_option( 'chp_adb_plugin_btn2_show' )) ? false : get_option( 'chp_adb_plugin_btn2_show' )           
+                'enable' => empty(get_option( 'chp_adb_plugin_enable' )) ? true : sanitize_text_field ( get_option( 'chp_adb_plugin_enable' ) ),
+                'title' => empty(get_option( 'chp_adb_plugin_title' )) ? 'Ads Blocker Detected!!!' : sanitize_text_field ( get_option( 'chp_adb_plugin_title' ) ),
+                'content' => empty(get_option( 'chp_adb_plugin_content' )) ? '<p>We have detected that you are using extensions to block ads. Please support us by disabling these ads blocker.</p>' : wp_kses_post( get_option( 'chp_adb_plugin_content' ) ),
+                'btn1_show' => empty(get_option( 'chp_adb_plugin_btn1_show' )) ? true : sanitize_text_field ( get_option( 'chp_adb_plugin_btn1_show' ) ),
+                'btn2_show' => empty(get_option( 'chp_adb_plugin_btn2_show' )) ? false : sanitize_text_field( get_option( 'chp_adb_plugin_btn2_show' ) )          
             );
 
             /****************************************
@@ -334,11 +335,11 @@ if( ! class_exists( 'chp_adsblocker_detector' ) ){
             Get user settings
             *****************************************/ 
             $settings = array(
-                'enable' => empty(get_option( 'chp_adb_plugin_enable' )) ? true : get_option( 'chp_adb_plugin_enable' ),
-                'title' => empty(get_option( 'chp_adb_plugin_title' )) ? 'Ads Blocker Detected!!!' : get_option( 'chp_adb_plugin_title' ),
-                'content' => empty(get_option( 'chp_adb_plugin_content' )) ? '<p>We have detected that you are using extensions to block ads. Please support us by disabling these ads blocker.</p>' : get_option( 'chp_adb_plugin_content' ),
-                'btn1_show' => empty(get_option( 'chp_adb_plugin_btn1_show' )) ? true : get_option( 'chp_adb_plugin_btn1_show' ),
-                'btn2_show' => empty(get_option( 'chp_adb_plugin_btn2_show' )) ? false : get_option( 'chp_adb_plugin_btn2_show' )           
+                'enable' => empty(get_option( 'chp_adb_plugin_enable' )) ? true : sanitize_text_field ( get_option( 'chp_adb_plugin_enable' ) ),
+                'title' => empty(get_option( 'chp_adb_plugin_title' )) ? 'Ads Blocker Detected!!!' : sanitize_text_field ( get_option( 'chp_adb_plugin_title' ) ),
+                'content' => empty(get_option( 'chp_adb_plugin_content' )) ? '<p>We have detected that you are using extensions to block ads. Please support us by disabling these ads blocker.</p>' : wp_kses_post( get_option( 'chp_adb_plugin_content' ) ),
+                'btn1_show' => empty(get_option( 'chp_adb_plugin_btn1_show' )) ? true : sanitize_text_field ( get_option( 'chp_adb_plugin_btn1_show' ) ),
+                'btn2_show' => empty(get_option( 'chp_adb_plugin_btn2_show' )) ? false : sanitize_text_field( get_option( 'chp_adb_plugin_btn2_show' ) )          
             );
 
             /****************************************
@@ -391,11 +392,11 @@ if( ! class_exists( 'chp_adsblocker_detector' ) ){
             Setup default settings
             *****************************************/
             $options = chp_ads_block_defaults();
-            update_option( 'chp_adb_plugin_enable', $options->enable );
-            update_option( 'chp_adb_plugin_title', $options->title );
-            update_option( 'chp_adb_plugin_content', $options->content );
-            update_option( 'chp_adb_plugin_btn1_show', $options->btn1_show );
-            update_option( 'chp_adb_plugin_btn1_show', $options->btn2_show );
+            update_option( 'chp_adb_plugin_enable', sanitize_text_field ( $options->enable ) );
+            update_option( 'chp_adb_plugin_title', sanitize_text_field ( $options->title ) );
+            update_option( 'chp_adb_plugin_content', wp_kses_post ( $options->content ) );
+            update_option( 'chp_adb_plugin_btn1_show', sanitize_text_field ( $options->btn1_show ) );
+            update_option( 'chp_adb_plugin_btn1_show', sanitize_text_field ( $options->btn2_show ) );
 
         }
 
@@ -417,11 +418,11 @@ if( ! class_exists( 'chp_adsblocker_detector' ) ){
             Do Something
             *****************************************/
             $options = chp_ads_block_defaults();
-            update_option( 'chp_adb_plugin_enable', $options->enable );
-            update_option( 'chp_adb_plugin_title', $options->title );
-            update_option( 'chp_adb_plugin_content', $options->content );
-            update_option( 'chp_adb_plugin_btn1_show', $options->btn1_show );
-            update_option( 'chp_adb_plugin_btn1_show', $options->btn2_show );
+            update_option( 'chp_adb_plugin_enable', null );
+            update_option( 'chp_adb_plugin_title', null );
+            update_option( 'chp_adb_plugin_content', null );
+            update_option( 'chp_adb_plugin_btn1_show', null );
+            update_option( 'chp_adb_plugin_btn1_show', null );
 
         }
 
