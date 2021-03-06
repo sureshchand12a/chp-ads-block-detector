@@ -111,8 +111,41 @@ if( ! class_exists( 'chp_adsblocker_detector' ) ){
                 [$this, 'ofs_null'],
                 'chp_abd_settings'
             );
+
             add_settings_field(
-                'chp_adb_data',
+                'chp_adb_plugin_enable',
+                '',
+                [$this, 'ofs_null'],
+                'chp_abd_settings',
+                'chp_abd_settings_section'
+            );
+
+            add_settings_field(
+                'chp_adb_plugin_title',
+                '',
+                [$this, 'ofs_null'],
+                'chp_abd_settings',
+                'chp_abd_settings_section'
+            );
+
+            add_settings_field(
+                'chp_adb_plugin_content',
+                '',
+                [$this, 'ofs_null'],
+                'chp_abd_settings',
+                'chp_abd_settings_section'
+            );
+
+            add_settings_field(
+                'chp_adb_plugin_btn1_show',
+                '',
+                [$this, 'ofs_null'],
+                'chp_abd_settings',
+                'chp_abd_settings_section'
+            );
+
+            add_settings_field(
+                'chp_adb_plugin_btn2_show',
                 '',
                 [$this, 'ofs_null'],
                 'chp_abd_settings',
@@ -139,9 +172,32 @@ if( ! class_exists( 'chp_adsblocker_detector' ) ){
             *****************************************/ 
             if( isset( $_POST['settings'] ) ){
                 $settings = $_POST['settings'];
-                if(is_array($settings) && !empty($settings)){
-                    $settings = serialize($settings);
-                    update_option( 'chp_adb_data', $settings );
+                if( is_array ( $settings ) && ! empty ( $settings ) ){
+                   
+                    /****************************************
+                    update settings of plugin
+                    *****************************************/
+                    $enable = sanitize_text_field($settings['enable']);
+                    $title = sanitize_text_field($settings['title']);
+                    $btn1_show = sanitize_text_field($settings['btn1_show']);
+                    $btn2_show = sanitize_text_field($settings['btn2_show']);
+                    $content = wp_kses_post($settings['content']);
+
+                    if( !is_bool($enable) )
+                        update_option( 'chp_adb_plugin_enable', $enable );
+
+                    if( !empty($title) )
+                        update_option( 'chp_adb_plugin_title', $title );
+
+                    if( !empty($content) )
+                        update_option( 'chp_adb_plugin_content', $content );
+                    
+                    if( !is_bool($btn1_show) )
+                        update_option( 'chp_adb_plugin_btn1_show', $btn1_show );
+                    
+                    if( !is_bool($btn2_show) )
+                        update_option( 'chp_adb_plugin_btn2_show', $btn2_show );
+                    
                     echo 'Settings save successfully';
                 }else{
                     echo 'We got some issue on updating settings.';
@@ -153,7 +209,12 @@ if( ! class_exists( 'chp_adsblocker_detector' ) ){
             Reset All the settings
             *****************************************/ 
             if( isset( $_POST['reset'] ) ){
-                update_option( 'chp_adb_data', chp_ads_block_defaults() );
+                $options = chp_ads_block_defaults();
+                update_option( 'chp_adb_plugin_enable', $options->enable );
+                update_option( 'chp_adb_plugin_title', $options->title );
+                update_option( 'chp_adb_plugin_content', $options->content );
+                update_option( 'chp_adb_plugin_btn1_show', $options->btn1_show );
+                update_option( 'chp_adb_plugin_btn1_show', $options->btn2_show );
                 echo 'Settings reset successfully';
             }
 
@@ -211,15 +272,6 @@ if( ! class_exists( 'chp_adsblocker_detector' ) ){
 
         }
 
-        /****************************************
-        Checking Free Version 
-        *****************************************/
-        public function pro_exists(){
-
-            return in_array('chp_adsblocker_detector_pro/chp_adsblocker_detector_pro.php', apply_filters('active_plugins', get_option('active_plugins')));
-
-        }
-
 
         /****************************************
         Adding scripts for admin dashboard
@@ -248,9 +300,13 @@ if( ! class_exists( 'chp_adsblocker_detector' ) ){
             /****************************************
             Get user settings
             *****************************************/ 
-            $settings = get_option( 'chp_adb_data' );
-            $settings = empty($settings) ? chp_ads_block_defaults() : $settings;
-            $settings = unserialize($settings);
+            $settings = array(
+                'enable' => empty(get_option( 'chp_adb_plugin_enable' )) ? true : get_option( 'chp_adb_plugin_enable' ),
+                'title' => empty(get_option( 'chp_adb_plugin_title' )) ? 'Ads Blocker Detected!!!' : get_option( 'chp_adb_plugin_title' ),
+                'content' => empty(get_option( 'chp_adb_plugin_content' )) ? '<p>We have detected that you are using extensions to block ads. Please support us by disabling these ads blocker.</p>' : get_option( 'chp_adb_plugin_content' ),
+                'btn1_show' => empty(get_option( 'chp_adb_plugin_btn1_show' )) ? true : get_option( 'chp_adb_plugin_btn1_show' ),
+                'btn2_show' => empty(get_option( 'chp_adb_plugin_btn2_show' )) ? false : get_option( 'chp_adb_plugin_btn2_show' )           
+            );
 
             /****************************************
             Check Whether plugin is active
@@ -277,9 +333,13 @@ if( ! class_exists( 'chp_adsblocker_detector' ) ){
             /****************************************
             Get user settings
             *****************************************/ 
-            $settings = get_option( 'chp_adb_data' );
-            $settings = empty($settings) ? chp_ads_block_defaults() : $settings;
-            $settings = unserialize($settings);
+            $settings = array(
+                'enable' => empty(get_option( 'chp_adb_plugin_enable' )) ? true : get_option( 'chp_adb_plugin_enable' ),
+                'title' => empty(get_option( 'chp_adb_plugin_title' )) ? 'Ads Blocker Detected!!!' : get_option( 'chp_adb_plugin_title' ),
+                'content' => empty(get_option( 'chp_adb_plugin_content' )) ? '<p>We have detected that you are using extensions to block ads. Please support us by disabling these ads blocker.</p>' : get_option( 'chp_adb_plugin_content' ),
+                'btn1_show' => empty(get_option( 'chp_adb_plugin_btn1_show' )) ? true : get_option( 'chp_adb_plugin_btn1_show' ),
+                'btn2_show' => empty(get_option( 'chp_adb_plugin_btn2_show' )) ? false : get_option( 'chp_adb_plugin_btn2_show' )           
+            );
 
             /****************************************
             Check Whether plugin is active
@@ -306,14 +366,12 @@ if( ! class_exists( 'chp_adsblocker_detector' ) ){
     Default settings
     *****************************************/ 
     function chp_ads_block_defaults(){
-        return serialize(
-            array(
-                'enable' => true,
-                'content' => '<p>We have detected that you are using extensions to block ads. Please support us by disabling these ads blocker.</p>',
-                'title' => 'Ads Blocker Detected!!!',
-                'btn1_show' => true,
-                'btn2_show' => false
-            )
+        return (object) array(
+            'enable' => true,
+            'content' => '<p>We have detected that you are using extensions to block ads. Please support us by disabling these ads blocker.</p>',
+            'title' => 'Ads Blocker Detected!!!',
+            'btn1_show' => true,
+            'btn2_show' => false
         );
     }
 
@@ -332,7 +390,12 @@ if( ! class_exists( 'chp_adsblocker_detector' ) ){
             /****************************************
             Setup default settings
             *****************************************/
-            update_option( 'chp_adb_data', chp_ads_block_defaults() );
+            $options = chp_ads_block_defaults();
+            update_option( 'chp_adb_plugin_enable', $options->enable );
+            update_option( 'chp_adb_plugin_title', $options->title );
+            update_option( 'chp_adb_plugin_content', $options->content );
+            update_option( 'chp_adb_plugin_btn1_show', $options->btn1_show );
+            update_option( 'chp_adb_plugin_btn1_show', $options->btn2_show );
 
         }
 
@@ -353,7 +416,12 @@ if( ! class_exists( 'chp_adsblocker_detector' ) ){
             /****************************************
             Do Something
             *****************************************/
-            update_option( 'chp_adb_data', null );
+            $options = chp_ads_block_defaults();
+            update_option( 'chp_adb_plugin_enable', $options->enable );
+            update_option( 'chp_adb_plugin_title', $options->title );
+            update_option( 'chp_adb_plugin_content', $options->content );
+            update_option( 'chp_adb_plugin_btn1_show', $options->btn1_show );
+            update_option( 'chp_adb_plugin_btn1_show', $options->btn2_show );
 
         }
 
