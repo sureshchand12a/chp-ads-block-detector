@@ -1,9 +1,10 @@
 === CHP Ads Block Detector ===
+Contributors: sureshchand12a
 Tags: detect ads blocker, ads blocker, blocker, increase revinue
-Requires at least: 5.1
-Tested up to: 5.6.2
-Stable tag: 1.0
-Requires PHP: 7.0
+Requires at least: 5.2
+Tested up to: 5.7
+Stable tag: 1.1
+Requires PHP: 7.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -15,8 +16,6 @@ Adblocking extensions are most used to block the ads shown in browsers or websit
 
 Now, We have introduced the WordPress plugin (**CHP Ads Block Detector WordPress Plugin**) that will detect most of the AdBlock extensions installed on the browser and show a popup to disable the extension. This plugin restricts the user to access the page unless the user will disable the extension for your website.
 
-[![Need Help](https://codehelppro.com/wp-content/uploads/2021/02/Need-Help-Banner.2-1.jpg)](https://codehelppro.com/product/chp-ads-block-detector/)
-
 This will work for most of the ads block extension such as Adblock, AdBlock Plus, ghostery, etc
 
 **Features:**
@@ -25,17 +24,9 @@ This will work for most of the ads block extension such as Adblock, AdBlock Plus
 *   ☞ Lightweight ☞ Ability to customize the title
 *   ☞ Ability to customize messages
 *   ☞ Hide or Show Refresh and Close Button
-
-**Pro Features:**
-
 *   ☞ Change style of the popup
 *   ☞ Customize own title or message
-*   ☞ Customize Overlay Effect
-*   ☞ Sticky Message
 *   ☞ Custom Buttons
-
-[![Buy Pro](https://codehelppro.com/wp-content/uploads/2021/03/Orange-Buy-Now-Button2.png)](https://codehelppro.com/product/chp-ads-block-detector/)
-
 
 Thank You
 
@@ -70,6 +61,18 @@ Yes, it is. It will compatible with most of the plugin that exists on WordPress 
 Please create a forum in codehelppro.com or WordPress support inside the CHP Ads Block Detector section. We will contact you as soon as possible.
 
 == Screenshots ==
-1. https://codehelppro.com/wp-content/uploads/2021/02/04_preview.png
-2. https://codehelppro.com/wp-content/uploads/2021/02/02_preview.png
-3. https://codehelppro.com/wp-content/uploads/2021/02/03_preview.png
+1. Customizable settings on admin dashboard
+2. Customizable settings on admin dashboard
+3. Frontend preview of detecting ads block
+
+== Changelog ==
+
+= 1.1 =
+*  ☞ Change style of the popup
+*  ☞ Customize own title or message
+*  ☞ Custom Buttons text
+*  ☞ Popup Alignment
+*  ☞ Minor Bug fixes
+
+= 1.0 =
+Initail Release
