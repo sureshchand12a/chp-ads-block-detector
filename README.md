@@ -12,16 +12,15 @@ This will work for most of the ads block extension such as Adblock, AdBlock Plus
 
 **Features:**
 
-*   ☞ Doesn\'t any extension or library (Even jQuery)
-*   ☞ Lightweight 
-*   ☞ Ability to customize the title
-*   ☞ Ability to customize messages
-*   ☞ Hide or Show Refresh and Close Button
-*   ☞ Change style of the popup
-*   ☞ Customize own title or message
-*   ☞ Customize Overlay Effect
-*   ☞ Sticky Message
-*   ☞ Custom Buttons
+☞ Doesn\'t any extension or library (Even jQuery)
+☞ Lightweight 
+☞ Ability to customize the title
+☞ Ability to customize messages
+☞ Hide or Show Refresh and Close Button
+☞ Change style of the popup
+☞ Customize own title or message
+☞ Sticky Message
+☞ Custom Buttons Text
 
 ## Installation
 
@@ -29,10 +28,10 @@ This section describes how to install the plugin and get it working.
 
 **STEP:**
 
-*   ☞  Upload the plugin files to the `/wp-content/plugins/ads-block-detector` directory, or install the plugin through the WordPress plugins screen directly.
-*   ☞  Activate the plugin through the 'Plugins' screen in WordPress
-*   ☞  Use the Settings ->* Ads Block Detector* screen to configure the plugin
-*   ☞  (Make your instructions match the desired user flow for activating and installing your plugin. Include any steps that might be needed for explanatory purposes)
+☞  Upload the plugin files to the `/wp-content/plugins/ads-block-detector` directory, or install the plugin through the WordPress plugins screen directly.
+☞  Activate the plugin through the 'Plugins' screen in WordPress
+☞  Use the Settings ->* Ads Block Detector* screen to configure the plugin
+☞  (Make your instructions match the desired user flow for activating and installing your plugin. Include any steps that might be needed for explanatory purposes)
 
 ## Frequently Asked Questions
 
