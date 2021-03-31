@@ -6,7 +6,7 @@ Adblocking extensions are most used to block the ads shown in browsers or websit
 
 Now, We have introduced the WordPress plugin (**CHP Ads Block Detector WordPress Plugin**) that will detect most of the AdBlock extensions installed on the browser and show a popup to disable the extension. This plugin restricts the user to access the page unless the user will disable the extension for your website.
 
-[![Need Help](https://codehelppro.com/wp-content/uploads/2021/02/Need-Help-Banner.2-1.jpg)](https://codehelppro.com/product/chp-ads-block-detector/)
+[![Need Help](https://codehelppro.com/wp-content/uploads/2021/02/Need-Help-Banner.2-1.jpg)](https://codehelppro.com/product/wordpress/plugin/chp-ads-block-detector/)
 
 This will work for most of the ads block extension such as Adblock, AdBlock Plus, ghostery, etc
 
@@ -17,17 +17,11 @@ This will work for most of the ads block extension such as Adblock, AdBlock Plus
 *   ☞ Ability to customize the title
 *   ☞ Ability to customize messages
 *   ☞ Hide or Show Refresh and Close Button
-
-**Pro Features:**
-
 *   ☞ Change style of the popup
 *   ☞ Customize own title or message
 *   ☞ Customize Overlay Effect
 *   ☞ Sticky Message
 *   ☞ Custom Buttons
-
-[![Buy Pro](https://codehelppro.com/wp-content/uploads/2021/03/Orange-Buy-Now-Button2.png)](https://codehelppro.com/product/chp-ads-block-detector/)
-
 
 ## Installation
 
