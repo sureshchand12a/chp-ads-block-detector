@@ -10,6 +10,8 @@ Now, We have introduced the WordPress plugin (**CHP Ads Block Detector WordPress
 
 This will work for most of the ads block extension such as Adblock, AdBlock Plus, ghostery, etc
 
+This plugin will also works for opera built-in ads block extension.
+
 **Features:**
 
 * ☞ Doesn\'t any extension or library (Even jQuery)
@@ -34,6 +36,10 @@ This section describes how to install the plugin and get it working.
 * ☞  (Make your instructions match the desired user flow for activating and installing your plugin. Include any steps that might be needed for explanatory purposes)
 
 ## Frequently Asked Questions
+
+#### IS IT WORKING FOR OPERA BUILT-IN ADS BLOCKER EXTENSION? =
+
+Yes, we have tested our plugin for opera built-in ads blocker extension on 1.2 version. We would recommend you to use latest version which will support for opera also.
 
 #### IS IT WORKING WITH GOOGLE ADSENSE?
 
