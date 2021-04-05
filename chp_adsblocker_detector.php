@@ -4,7 +4,7 @@
  * Plugin Name:       CHP Ads Block Detector
  * Plugin URI:        https://codehelppro.com/product/wordpress/plugin/chp-ads-block-detector/
  * Description:       <code>CHP Ads Block Detector</code> plugin is developed in order to  detect most of the AdBlock extensions installed on the browser and show a popup to disable the extension. This plugin restricts the user to access the page unless the user will disable the extension for your website.
- * Version:           1.1
+ * Version:           1.2
  * Requires at least: 5.2
  * Requires PHP:      7.2
  * Tested up to:      5.7
@@ -85,7 +85,7 @@ if( ! class_exists( 'chp_adsblocker_detector' ) ){
             /****************************************
             Adding settings label
             *****************************************/
-            add_filter('plugin_action_links', [$this, 'plugin_links'], 10, 2  );
+            add_filter('plugin_action_links_' . plugin_basename(__FILE__), [$this, 'plugin_links'], 10, 2  );
 
 
             /****************************************
@@ -331,7 +331,7 @@ if( ! class_exists( 'chp_adsblocker_detector' ) ){
         *****************************************/  
         public function scripts(){
 
-            wp_enqueue_script( 'chp-ads-handler', CHP_ADSB_URL . 'js/chp-ads.js', array(), '1.0', true );
+            //wp_enqueue_script( 'chp-ads-handler', CHP_ADSB_URL . 'js/chp-ads.js', array(), '1.0', true );
 
         }
 
@@ -383,7 +383,7 @@ if( ! class_exists( 'chp_adsblocker_detector' ) ){
 <div class="chp_ads_blocker-overlay" id="chp_ads_blocker-overlay" tabindex="-1"></div>
 <div class="chp_ads_blocker_detector chp_ads_blocker_detector-hide" id="chp_ads_blocker-modal"><img class="chp_ads_blocker_detector-icon" src="<?php echo CHP_ADSB_URL; ?>img/icon.png" alt="Ads Blocker Image Powered by Code Help Pro"><div class="chp_ads_blocker_detector-title"><?php echo $settings['title']; ?></div><div class="chp_ads_blocker_detector-content"><?php echo str_replace('<p', '<p class="chp_ads_blocker_detector-message"', $settings['content']); ?></div><div class="chp_ads_blocker_detector-action"><?php if( filter_var( $settings['btn2_show'], FILTER_VALIDATE_BOOLEAN ) ): ?><a class="chp_ads_blocker_detector-action-btn-close" onclick="chp_ads_blocker_detector(false)"><?php echo $settings['btn2_text']; ?></a><?php endif; ?><?php if( filter_var( $settings['btn1_show'], FILTER_VALIDATE_BOOLEAN ) ): ?><a class="chp_ads_blocker_detector-action-btn-ok" onclick="reload()"><?php echo $settings['btn1_text']; ?></a><?php endif; ?></div></div>
 
-<script>function reload(){window.location.href = window.location.href;}function hasClass(ele, cls) {return !!ele.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));}function addClass(ele, cls) {if (!hasClass(ele, cls)) ele.className += " " + cls;}function removeClass(ele, cls) {if (hasClass(ele, cls)) {var reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');ele.className = ele.className.replace(reg, ' ');}}function chp_ads_blocker_detector(enable){var chpabd_overlay = document.getElementById('chp_ads_blocker-overlay');var chpabd_modal = document.getElementById('chp_ads_blocker-modal');if ( enable ) {if(chpabd_overlay !== null)addClass(chpabd_overlay, 'active');addClass(chpabd_modal, 'chp_ads_blocker_detector-show');removeClass(chpabd_modal, 'chp_ads_blocker_detector-hide');} else {if(chpabd_overlay !== null)removeClass(chpabd_overlay, 'active');removeClass(chpabd_modal, 'chp_ads_blocker_detector-show');addClass(chpabd_modal, 'chp_ads_blocker_detector-hide');}}</script>
+<script>function reload(){window.location.href=window.location.href}function hasClass(e,a){return!!e.className.match(new RegExp("(\\s|^)"+a+"(\\s|$)"))}function addClass(e,a){hasClass(e,a)||(e.className+=" "+a)}function removeClass(e,a){if(hasClass(e,a)){var o=new RegExp("(\\s|^)"+a+"(\\s|$)");e.className=e.className.replace(o," ")}}document.addEventListener("DOMContentLoaded",init,!1);var intervalId=window.setInterval(function(){init()},1e3);function chp_ads_blocker_detector(e){var a=document.getElementById("chp_ads_blocker-overlay"),o=document.getElementById("chp_ads_blocker-modal");e?(clearInterval(intervalId),null!==a&&addClass(a,"active"),addClass(o,"chp_ads_blocker_detector-show"),removeClass(o,"chp_ads_blocker_detector-hide")):(null!==a&&removeClass(a,"active"),removeClass(o,"chp_ads_blocker_detector-show"),addClass(o,"chp_ads_blocker_detector-hide"))}function init(){adsBlocked(function(e){chp_ads_blocker_detector(!!e)})}function adsBlocked(e){var a=new Request("https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js",{method:"HEAD",mode:"no-cors"});fetch(a).then(function(e){return e}).then(function(a){e(!1)}).catch(function(a){e(!0)})}</script>
         <?php endif; ?>
             <?php
 
