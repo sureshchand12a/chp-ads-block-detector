@@ -1,37 +1,25 @@
-## Welcome to GitHub Pages
+# CHP Ads Block Detector
 
-You can use the [editor on GitHub](https://github.com/sureshchand12a/chp-ads-block-detector/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+This Plugin will detect most of the AdBlock extensions installed on the browser and show a popup to disable the extension. This plugin restricts the user to access the page unless the user will disable the extension for your website.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### SEE SOME CORE FEATURES
+We have built amazing products to detect the ads blocker extension stop them.
+Check out the core product features.
 
-### Markdown
+##### CODE OPTIMIZED
+Each line of code is well documented in a readable form and code is also optimized.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+#### CUSTOMIZABLE
+Fully customizable check part of modals such as Title, Message, and Overlay effect.
 
-```markdown
-Syntax highlighted code block
+#### THEME
+Easily customizable the modal theme. Have the capability of changing background, buttons, and many more.
 
-# Header 1
-## Header 2
-### Header 3
+#### STICKY NOTICE
+Ability to show the sticky notification either to the footer or on the top of the website.
 
-- Bulleted
-- List
+#### TIMER NOTICE
+You can able to set the timer on message. After that time, Message will automatically hidden.
 
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/sureshchand12a/chp-ads-block-detector/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+#### SECURITY
+Difficulty to find our plugin by the Adblock extension because our classes and files are changing randomly.
