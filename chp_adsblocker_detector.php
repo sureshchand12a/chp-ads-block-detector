@@ -4,7 +4,7 @@
  * Plugin Name:       CHP Ads Block Detector
  * Plugin URI:        https://codehelppro.com/product/wordpress/plugin/chp-ads-block-detector/
  * Description:       <code>CHP Ads Block Detector</code> plugin is developed in order to  detect most of the AdBlock extensions installed on the browser and show a popup to disable the extension. This plugin restricts the user to access the page unless the user will disable the extension for your website.
- * Version:           1.2
+ * Version:           2.2
  * Requires at least: 5.2
  * Requires PHP:      7.2
  * Tested up to:      5.7
@@ -22,7 +22,7 @@ if( !defined('ABSPATH') ) exit(1);
 PLUGIN VERSION
 *****************************************/ 
 if(!defined('CHP_ADSB_VERSION'))
-   define('CHP_ADSB_VERSION', '1.1');
+   define('CHP_ADSB_VERSION', '2.2');
 
 /****************************************
 PLUGIN DIRECTORY PATH CONSTANT
@@ -381,11 +381,23 @@ if( ! class_exists( 'chp_adsblocker_detector' ) ){
 
             ?>
 <div class="chp_ads_blocker-overlay" id="chp_ads_blocker-overlay" tabindex="-1"></div>
-<div class="chp_ads_blocker_detector chp_ads_blocker_detector-hide" id="chp_ads_blocker-modal"><img class="chp_ads_blocker_detector-icon" src="<?php echo CHP_ADSB_URL; ?>img/icon.png" alt="Ads Blocker Image Powered by Code Help Pro"><div class="chp_ads_blocker_detector-title"><?php echo $settings['title']; ?></div><div class="chp_ads_blocker_detector-content"><?php echo str_replace('<p', '<p class="chp_ads_blocker_detector-message"', $settings['content']); ?></div><div class="chp_ads_blocker_detector-action"><?php if( filter_var( $settings['btn2_show'], FILTER_VALIDATE_BOOLEAN ) ): ?><a class="chp_ads_blocker_detector-action-btn-close" onclick="chp_ads_blocker_detector(false)"><?php echo $settings['btn2_text']; ?></a><?php endif; ?><?php if( filter_var( $settings['btn1_show'], FILTER_VALIDATE_BOOLEAN ) ): ?><a class="chp_ads_blocker_detector-action-btn-ok" onclick="reload()"><?php echo $settings['btn1_text']; ?></a><?php endif; ?></div></div>
+<div class="chp_ads_blocker_detector chp_ads_blocker_detector-hide" id="chp_ads_blocker-modal"><img
+        class="chp_ads_blocker_detector-icon" src="<?php echo CHP_ADSB_URL; ?>img/icon.png"
+        alt="Ads Blocker Image Powered by Code Help Pro">
+    <div class="chp_ads_blocker_detector-title"><?php echo $settings['title']; ?></div>
+    <div class="chp_ads_blocker_detector-content">
+        <?php echo str_replace('<p', '<p class="chp_ads_blocker_detector-message"', $settings['content']); ?></div>
+    <div class="chp_ads_blocker_detector-action">
+        <?php if( filter_var( $settings['btn2_show'], FILTER_VALIDATE_BOOLEAN ) ): ?><a
+            class="chp_ads_blocker_detector-action-btn-close"
+            onclick="chp_ads_blocker_detector(false)"><?php echo $settings['btn2_text']; ?></a><?php endif; ?><?php if( filter_var( $settings['btn1_show'], FILTER_VALIDATE_BOOLEAN ) ): ?><a
+            class="chp_ads_blocker_detector-action-btn-ok"
+            onclick="reload()"><?php echo $settings['btn1_text']; ?></a><?php endif; ?></div>
+</div>
 
-<script>function reload(){window.location.href=window.location.href}function hasClass(e,a){return!!e.className.match(new RegExp("(\\s|^)"+a+"(\\s|$)"))}function addClass(e,a){hasClass(e,a)||(e.className+=" "+a)}function removeClass(e,a){if(hasClass(e,a)){var o=new RegExp("(\\s|^)"+a+"(\\s|$)");e.className=e.className.replace(o," ")}}document.addEventListener("DOMContentLoaded",init,!1);var intervalId=window.setInterval(function(){init()},1e3);function chp_ads_blocker_detector(e){var a=document.getElementById("chp_ads_blocker-overlay"),o=document.getElementById("chp_ads_blocker-modal");e?(clearInterval(intervalId),null!==a&&addClass(a,"active"),addClass(o,"chp_ads_blocker_detector-show"),removeClass(o,"chp_ads_blocker_detector-hide")):(null!==a&&removeClass(a,"active"),removeClass(o,"chp_ads_blocker_detector-show"),addClass(o,"chp_ads_blocker_detector-hide"))}function init(){adsBlocked(function(e){chp_ads_blocker_detector(!!e)})}function adsBlocked(e){var a=new Request("https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js",{method:"HEAD",mode:"no-cors"});fetch(a).then(function(e){return e}).then(function(a){e(!1)}).catch(function(a){e(!0)})}</script>
-        <?php endif; ?>
-            <?php
+<script>function reload(){window.location.href=window.location.href}function hasClass(e,t){return!!e.className.match(new RegExp("(\\s|^)"+t+"(\\s|$)"))}function addClass(e,t){hasClass(e,t)||(e.className+=" "+t)}function removeClass(e,t){if(hasClass(e,t)){var o=new RegExp("(\\s|^)"+t+"(\\s|$)");e.className=e.className.replace(o," ")}}document.addEventListener("DOMContentLoaded",init,!1);let ads=document.createElement("script");ads.setAttribute("src","https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"),document.head.appendChild(ads);let intervalId,count=0;function chp_ads_blocker_detector(e){var t=document.getElementById("chp_ads_blocker-overlay"),o=document.getElementById("chp_ads_blocker-modal");e?(clearInterval(intervalId),null!==t&&addClass(t,"active"),addClass(o,"chp_ads_blocker_detector-show"),removeClass(o,"chp_ads_blocker_detector-hide")):(null!==t&&removeClass(t,"active"),removeClass(o,"chp_ads_blocker_detector-show"),addClass(o,"chp_ads_blocker_detector-hide"))}function checkMultiple(){let e=!1;const t=document.createElement("div");t.innerHTML="&nbsp;",t.className="adsbox";try{document.body.appendChild(t);var o=document.querySelector(".adsbox");e=!o||0===o.offsetHeight}finally{t.parentNode.removeChild(t)}return e}function init(){adsBlocked(function(e){e?chp_ads_blocker_detector(!0):null==window.adsbygoogle?count>1?chp_ads_blocker_detector(!0):count++:chp_ads_blocker_detector(!1)})}function adsBlocked(e){var t=new Request("https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js",{method:"HEAD",mode:"no-cors"});fetch(t).then(function(t){e(!1)}).catch(function(t){e(!0)})}window.onload=(e=>{intervalId=window.setInterval(function(){init()},100)});</script>
+<?php endif; ?>
+<?php
 
         }
 
@@ -414,12 +426,144 @@ if( ! class_exists( 'chp_adsblocker_detector' ) ){
             Check Whether plugin is active
             *****************************************/ 
             if( filter_var( $settings['enable'], FILTER_VALIDATE_BOOLEAN ) ):
-
+                $settings = (object) $settings;
             ?>
-<style>.chp_ads_blocker-overlay {position: fixed;background-color: #000;z-index: 1060;height: 100%;width: 100%;left: 0;right: 0;top: 0;bottom: 0;opacity: 0;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";-webkit-transition: opacity 0.45s cubic-bezier(0.23, 1, 0.32, 1);-o-transition: opacity 0.45s cubic-bezier(0.23, 1, 0.32, 1);transition: opacity 0.45s cubic-bezier(0.23, 1, 0.32, 1);}.chp_ads_blocker-overlay.active {opacity: 0.6;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";}.chp_ads_blocker-overlay:not(.active),.chp_ads_blocker_detector:not(.chp_ads_blocker_detector-show){display:none;}.chp_ads_blocker_detector {color: #1b1919;position: fixed;z-index: 1061;border-radius: 2px;width: <?php echo $settings['width']; ?>px;margin-left: -200px;background-color: #fff;-webkit-box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12);box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12);font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;left: <?php echo $settings['left']; ?>%;top: <?php echo $settings['top']; ?>%;font-size: 16px;text-align: -webkit-center; }.chp_ads_blocker_detector-show {-webkit-animation: bounceIn .35s ease;-o-animation: bounceIn .35s ease;animation: bounceIn .35s ease;}.chp_ads_blocker_detector-hide {-webkit-animation: bounceOut .35s ease;-o-animation: bounceOut .35s ease;animation: bounceOut .35s ease;}.chp_ads_blocker_detector-title {padding: 24px 24px 20px;font-size: 20px;color: #1b1919;line-height: 1;padding-top: 0;}.chp_ads_blocker_detector-content {text-align: justify;padding: 24px;padding-top: 0;}.chp_ads_blocker_detector-message {margin: 0;padding: 0;color: #1b1919;font-size: 13px;line-height: 1.5;}.chp_ads_blocker_detector-action {padding: 8px;text-align: right;}.chp_ads_blocker_detector-action-btn-ok,.chp_ads_blocker_detector-action-btn-close {margin-left: 3px;cursor: pointer;height: 36px;line-height: 36px;min-width: 70px;text-align: center;outline: none !important;background-color: transparent;display: inline-block;border-radius: 2px;-webkit-tap-highlight-color: rgba(0, 0, 0, 0.12);-webkit-transition: all 0.45s cubic-bezier(0.23, 1, 0.32, 1);-o-transition: all 0.45s cubic-bezier(0.23, 1, 0.32, 1);transition: all 0.45s cubic-bezier(0.23, 1, 0.32, 1);}.chp_ads_blocker_detector-action-btn-ok{color:red;}.chp_ads_blocker_detector-action-btn-close{color:#1e8cbe;}.chp_ads_blocker_detector-action-btn-ok:hover,.chp_ads_blocker_detector-action-btn-close:hover {background-color: #ececec;}.chp_ads_blocker_detector-icon {width: 100px;padding: 1rem;}
+<style>
+.chp_ads_blocker-overlay {
+    position: fixed;
+    background-color: #000;
+    z-index: 1060;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    opacity: 0;
+    -webkit-transition: opacity .45s cubic-bezier(.23, 1, .32, 1);
+    -o-transition: opacity .45s cubic-bezier(.23, 1, .32, 1);
+    transition: opacity .45s cubic-bezier(.23, 1, .32, 1)
+}
+
+.chp_ads_blocker-overlay.active {
+    opacity: .6
+}
+
+.chp_ads_blocker-overlay:not(.active),
+.chp_ads_blocker_detector:not(.chp_ads_blocker_detector-show) {
+    display: none
+}
+
+.chp_ads_blocker_detector {
+    color: #1b1919;
+    position: fixed;
+    z-index: 1061;
+    border-radius: 2px;
+    width: <?php echo $settings->width;
+    ?>%;
+    background-color: #fff;
+    -webkit-box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12);
+    box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12);
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    left: <?php echo $settings->left;
+    ?>%;
+    top: <?php echo $settings->top;
+    ?>%;
+    font-size: 16px;
+    text-align: center;
+}
+
+@media only screen and (max-width:800px) {
+    .chp_ads_blocker_detector {
+        width: calc(<?php echo $settings->width; ?>% + 25%);
+        left: calc(<?php echo $settings->left; ?>% - 10%);
+    }
+}
+
+@media only screen and (max-width:500px) {
+    .chp_ads_blocker_detector {
+        width: 95%;
+        left: 2%
+    }
+}
+
+.chp_ads_blocker_detector-show {
+    -webkit-animation: bounceIn .35s ease;
+    -o-animation: bounceIn .35s ease;
+    animation: bounceIn .35s ease
+}
+
+.chp_ads_blocker_detector-hide {
+    -webkit-animation: bounceOut .35s ease;
+    -o-animation: bounceOut .35s ease;
+    animation: bounceOut .35s ease
+}
+
+.chp_ads_blocker_detector-title {
+    padding: 24px 24px 20px;
+    font-size: 20px;
+    color: #1b1919;
+    line-height: 1;
+    padding-top: 0
+}
+
+.chp_ads_blocker_detector-content {
+    text-align: justify;
+    padding: 24px;
+    padding-top: 0
+}
+
+.chp_ads_blocker_detector-message {
+    margin: 0;
+    padding: 0;
+    color: #1b1919;
+    font-size: 13px;
+    line-height: 1.5
+}
+
+.chp_ads_blocker_detector-action {
+    padding: 8px;
+    text-align: right
+}
+
+.chp_ads_blocker_detector-action-btn-close,
+.chp_ads_blocker_detector-action-btn-ok {
+    margin-left: 3px;
+    cursor: pointer;
+    height: 36px;
+    line-height: 36px;
+    min-width: 70px;
+    text-align: center;
+    outline: 0 !important;
+    background-color: transparent;
+    display: inline-block;
+    border-radius: 2px;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, .12);
+    -webkit-transition: all .45s cubic-bezier(.23, 1, .32, 1);
+    -o-transition: all .45s cubic-bezier(.23, 1, .32, 1);
+    transition: all .45s cubic-bezier(.23, 1, .32, 1)
+}
+
+.chp_ads_blocker_detector-action-btn-ok {
+    color: red
+}
+
+.chp_ads_blocker_detector-action-btn-close {
+    color: #1e8cbe
+}
+
+.chp_ads_blocker_detector-action-btn-close:hover,
+.chp_ads_blocker_detector-action-btn-ok:hover {
+    background-color: #ececec
+}
+
+.chp_ads_blocker_detector-icon {
+    width: 100px;
+    padding: 1rem
+}
 </style>
-        <?php endif; ?>
-            <?php
+<?php endif; ?>
+<?php
 
         }
 
@@ -443,9 +587,9 @@ if( ! class_exists( 'chp_adsblocker_detector' ) ){
             'btn2_show' => false,
             'btn1_text' => 'Refresh',
             'btn2_text' => 'Close',
-            'width' => '400',
+            'width' => '30',
             'top' => '30',
-            'left' => '50'
+            'left' => '35'
         );
     }
 
