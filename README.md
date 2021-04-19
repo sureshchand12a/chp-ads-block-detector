@@ -12,17 +12,41 @@ This will work for most of the ads block extension such as Adblock, AdBlock Plus
 
 This plugin will also works for opera built-in ads block extension.
 
+**TESTED FOR:**
+
+*   ☞ Adblock
+*   ☞ AdBlock Plus
+*   ☞ Ghostery
+*   ☞ AdGuard
+*   ☞ uBlocker
+*   ☞ Fair AdBlocker
+*   ☞ Hola ad remover
+*   ☞ Comodo AdBlocker
+*   ☞ Opera Built-in AdBlock extension
+
+
 **Features:**
 
-* ☞ Doesn\'t any extension or library (Even jQuery)
-* ☞ Lightweight 
-* ☞ Ability to customize the title
-* ☞ Ability to customize messages
-* ☞ Hide or Show Refresh and Close Button
-* ☞ Change style of the popup
-* ☞ Customize own title or message
-* ☞ Sticky Message
-* ☞ Custom Buttons Text
+*   ☞ Doesn\'t any extension or library (Even jQuery)
+*   ☞ Lightweight 
+*   ☞ Ability to customize the title
+*   ☞ Ability to customize messages
+*   ☞ Hide or Show Refresh and Close Button
+*   ☞ Change style of the popup
+*   ☞ Customize own title or message
+*   ☞ Custom Buttons
+
+**PRO Features:**
+
+*   ☞  Button Text Customizable
+*   ☞  Overlay Effect Customizable
+*   ☞  Theme
+*   ☞  Control Body Scroll
+*   ☞  Disable plugin for Pages
+*   ☞  Disable for Woocommerce Pages
+*   ☞  And much much more …
+
+For more information regarding adblock detecting and revenue recovery, please visit [CodeHelpPro](https://codehelppro.com)
 
 ## Installation
 
@@ -37,7 +61,7 @@ This section describes how to install the plugin and get it working.
 
 ## Frequently Asked Questions
 
-#### IS IT WORKING FOR OPERA BUILT-IN ADS BLOCKER EXTENSION? =
+#### IS IT WORKING FOR OPERA BUILT-IN ADS BLOCKER EXTENSION?
 
 Yes, we have tested our plugin for opera built-in ads blocker extension on 1.2 version. We would recommend you to use latest version which will support for opera also.
 
